@@ -29,7 +29,12 @@ body{margin:0;color:var(--ink);font:300 17px/1.6 Roboto,system-ui,sans-serif;
   background:linear-gradient(#0a0d14 0%,#141a26 18%,#1c1f26 40%,#201c1c 62%,#3a2618 85%,#5c3a22 100%)}
 a{color:var(--warm);text-underline-offset:3px}
 a:hover{color:#ffe0a8}
-.hero{min-height:92vh;display:grid;place-content:center;justify-items:center;text-align:center;padding:10vh 6vw 6vh;position:relative}
+.hero{min-height:92vh;display:grid;place-content:center;justify-items:center;text-align:center;padding:10vh 6vw 6vh;position:relative;isolation:isolate;overflow:hidden;background:#0d1015 url(video/hero-poster.jpg) center/cover}
+/* The hero video (#279): the view from the mast top, silent and looping, under a dark wash so the words stay clear and its
+   foot fades into the page. The poster stands in until it plays, and instead of it for reduced motion. */
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(#0d101500 55%,#0d1015 100%),radial-gradient(ellipse at 50% 45%,#0d101599,#0d101566 80%)}
+@media (prefers-reduced-motion:reduce){.hero .bg{display:none}}
 .hero .logo{width:min(520px,84vw);height:auto;display:block}
 /* The lamp flashes every 2 s, as the beacon does once it's lit: a short beat on, then dark. Still for reduced motion. */
 .logo .lamp{animation:beacon 2s infinite}
@@ -74,6 +79,10 @@ footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
 <body>
 
 <header class="hero">
+  <video class="bg" muted autoplay loop playsinline poster="video/hero-poster.jpg" aria-hidden="true">
+    <source src="video/hero.webm" type="video/webm">
+    <source src="video/hero.mp4" type="video/mp4">
+  </video>
   <a class="top" href="devlog/">Dev log</a>
   <!-- The logo: the mast (decided 2026-10-31): SPIRE in Big Shoulders Display Light, the I a mast with its red lamp. The final asset will be outlined. -->
   <svg class="logo" viewBox="0 0 480 170" role="img" aria-label="Spire">
