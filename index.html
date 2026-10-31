@@ -31,6 +31,12 @@ a{color:var(--warm);text-underline-offset:3px}
 a:hover{color:#ffe0a8}
 .hero{min-height:92vh;display:grid;place-content:center;justify-items:center;text-align:center;padding:10vh 6vw 6vh;position:relative}
 .hero .logo{width:min(520px,84vw);height:auto;display:block}
+/* The lamp flashes every 2 s, as the beacon does once it's lit: a short beat on, then dark. Still for reduced motion. */
+.logo .lamp{animation:beacon 2s infinite}
+.logo .glow{animation:beaconglow 2s infinite}
+@keyframes beacon{0%,18%{fill:#ff2a1a}30%,100%{fill:#3a1d1a}}
+@keyframes beaconglow{0%,18%{opacity:.25}30%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.logo .lamp,.logo .glow{animation:none}}
 .hero p{margin:14px 0 0;color:var(--dim);font-size:clamp(14px,2vw,18px);max-width:40ch}
 .hero .down{position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 main{max-width:980px;margin:0 auto;padding:0 6vw 48px}
@@ -70,7 +76,7 @@ footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
     </g>
     <g transform="translate(-10 0)">
       <path fill="#e8e6e1" d="M244.5 160 L247 112 H253 L255.5 160 Z M247 108 L248.2 76 H251.8 L253 108 Z M248.6 72 L249.3 46 H250.7 L251.4 72 Z M249.6 46 V30 H250.4 V46 Z"/>
-      <circle cx="250" cy="22" r="13" fill="#ff2a1a" opacity=".25"/><circle cx="250" cy="22" r="6.5" fill="#ff2a1a"/>
+      <circle class="glow" cx="250" cy="22" r="13" fill="#ff2a1a" opacity=".25"/><circle class="lamp" cx="250" cy="22" r="6.5" fill="#ff2a1a"/>
     </g>
   </svg>
   <p>A first-person climbing game. Up the outside of the towers, in the rain, to relight the warning lights on top.</p>
