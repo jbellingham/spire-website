@@ -39,6 +39,11 @@ a:hover{color:#ffe0a8}
 @media (prefers-reduced-motion:reduce){.logo .lamp,.logo .glow{animation:none}}
 .hero p{margin:14px 0 0;color:var(--dim);font-size:clamp(14px,2vw,18px);max-width:40ch}
 .hero .down{position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+/* The dev log, twice: a corner link that's always there, and one under the pitch for anyone who wants to follow along. */
+.top{position:absolute;top:max(18px,env(safe-area-inset-top,0px));right:max(18px,env(safe-area-inset-right,0px));font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--dim)}
+.top:hover{color:var(--warm)}
+.hero .log{display:inline-block;margin-top:26px;padding:9px 18px;border:1px solid #4a3a2c;border-radius:2px;color:var(--warm);text-decoration:none;font-size:14px;letter-spacing:.06em}
+.hero .log:hover{border-color:var(--warm);color:#ffe0a8}
 main{max-width:980px;margin:0 auto;padding:0 6vw 48px}
 .pitch{font-size:clamp(17px,2.3vw,21px);line-height:1.65;max-width:60ch;margin:0 auto 72px}
 .climb{display:grid;grid-template-columns:72px 1fr;gap:0 18px;margin:0}
@@ -69,6 +74,7 @@ footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
 <body>
 
 <header class="hero">
+  <a class="top" href="devlog/">Dev log</a>
   <!-- The logo: the mast (decided 2026-10-31): SPIRE in Big Shoulders Display Light, the I a mast with its red lamp. The final asset will be outlined. -->
   <svg class="logo" viewBox="0 0 480 170" role="img" aria-label="Spire">
     <g fill="#e8e6e1" font-family="'Big Shoulders Display',sans-serif" font-weight="300" font-size="138" text-anchor="middle">
@@ -80,6 +86,7 @@ footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
     </g>
   </svg>
   <p>A first-person climbing game. Up the outside of the towers, in the rain, to relight the warning lights on top.</p>
+  <a class="log" href="devlog/">Follow along: the dev log, day by day &rarr;</a>
   <div class="down">the climb, from the top</div>
 </header>
 
