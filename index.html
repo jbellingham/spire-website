@@ -10,7 +10,7 @@
 <meta property="og:description" content="A first-person climbing game. Up the outside of the towers, in the rain, to relight the warning lights on top.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jbellingham.github.io/spire-website/">
-<meta property="og:image" content="https://jbellingham.github.io/spire-website/shots/street.jpg">
+<meta property="og:image" content="https://jbellingham.github.io/spire-website/shots/beacon.jpg">
 <meta name="theme-color" content="#0d1015">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' rx='3' fill='%230d1015'/%3E%3Crect y='13' width='16' height='3' fill='%232a1d14'/%3E%3Crect x='7' y='6' width='2' height='10' fill='%23e8e6e1'/%3E%3Crect x='6' y='1' width='4' height='4' fill='%23ff2a1a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 <style>
 /* Spire's landing page (#284): one file, no scripts, no tracking; Google Fonts is the only outside request.
    The page runs the climb's colour script top to bottom: moonlight above the cloud at the top, the cloud, the rain, the smog,
-   the street's orange at the foot. The screenshots climb the tower as you scroll (street first), each with its height in the margin.
+   the street's orange at the foot. The screenshots descend the tower as you scroll, each with its height in the margin.
    To fill a slot: drop a JPEG about 1600 px wide into shots/ with the slot's name, then replace that slot's
    <div class="slot">...</div> with <img src="shots/NAME.jpg" alt="..."> and keep the caption. */
 :root{--ink:#e8e6e1;--dim:#9aa0a8;--warm:#ffcc73;--red:#ff2a1a}
@@ -31,6 +31,12 @@ a{color:var(--warm);text-underline-offset:3px}
 a:hover{color:#ffe0a8}
 .hero{min-height:92vh;display:grid;place-content:center;justify-items:center;text-align:center;padding:10vh 6vw 6vh;position:relative}
 .hero .logo{width:min(520px,84vw);height:auto;display:block}
+/* The lamp flashes every 2 s, as the beacon does once it's lit: a short beat on, then dark. Still for reduced motion. */
+.logo .lamp{animation:beacon 2s infinite}
+.logo .glow{animation:beaconglow 2s infinite}
+@keyframes beacon{0%,18%{fill:#ff2a1a}30%,100%{fill:#3a1d1a}}
+@keyframes beaconglow{0%,18%{opacity:.25}30%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.logo .lamp,.logo .glow{animation:none}}
 .hero p{margin:14px 0 0;color:var(--dim);font-size:clamp(14px,2vw,18px);max-width:40ch}
 .hero .down{position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);color:var(--dim);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 main{max-width:980px;margin:0 auto;padding:0 6vw 48px}
@@ -64,37 +70,27 @@ footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
 
 <header class="hero">
   <!-- The logo: the mast (decided 2026-10-31): SPIRE in Big Shoulders Display Light, the I a mast with its red lamp. The final asset will be outlined. -->
-  <svg class="logo" viewBox="0 20 480 150" role="img" aria-label="Spire">
+  <svg class="logo" viewBox="0 0 480 170" role="img" aria-label="Spire">
     <g fill="#e8e6e1" font-family="'Big Shoulders Display',sans-serif" font-weight="300" font-size="138" text-anchor="middle">
       <text x="50" y="160">S</text><text x="150" y="160">P</text><text x="330" y="160">R</text><text x="430" y="160">E</text>
     </g>
     <g transform="translate(-10 0)">
       <path fill="#e8e6e1" d="M244.5 160 L247 112 H253 L255.5 160 Z M247 108 L248.2 76 H251.8 L253 108 Z M248.6 72 L249.3 46 H250.7 L251.4 72 Z M249.6 46 V30 H250.4 V46 Z"/>
-      <circle cx="250" cy="22" r="13" fill="#ff2a1a" opacity=".25"/><circle cx="250" cy="22" r="6.5" fill="#ff2a1a"/>
+      <circle class="glow" cx="250" cy="22" r="13" fill="#ff2a1a" opacity=".25"/><circle class="lamp" cx="250" cy="22" r="6.5" fill="#ff2a1a"/>
     </g>
   </svg>
   <p>A first-person climbing game. Up the outside of the towers, in the rain, to relight the warning lights on top.</p>
-  <div class="down">the climb, from the street</div>
+  <div class="down">the climb, from the top</div>
 </header>
 
 <main>
   <p class="pitch">The red lights on the towers keep the flying traffic off them. When one goes dark the sky around it closes, and nothing can fly you up. So you go the only way left: up the outside, by the ladders, pipes, ledges and old sign brackets the building happens to have, one hand at a time, clipping your rope in where you can and resting at the lamps when your arms give out. The city has robots that could do it. You're cheaper, and you don't ask questions. Then one night the jobs stop making sense.</p>
 
-  <section class="climb" aria-label="Screenshots, from the street to the top of the tower">
+  <section class="climb" aria-label="Screenshots, from the top of the tower to the street">
     <figure>
-      <div class="h">0 m</div>
-      <div class="pic"><img src="shots/street.jpg" alt="A narrow street at night in heavy rain, lit shop signs and people with umbrellas, looking up at the dark HELIX tower with red drone lights round its top">
-      <figcaption>The street. That's the job, up there.</figcaption></div>
-    </figure>
-    <figure>
-      <div class="h">40 m</div>
-      <div class="pic"><img src="shots/hands.jpg" alt="A gloved hand gripping a wet drainpipe on a concrete wall, looking down the pipe and its clamps to the street below">
-      <figcaption>Hold by hold. Height has weight.</figcaption></div>
-    </figure>
-    <figure>
-      <div class="h">114 m</div>
-      <div class="pic"><img src="shots/skybar.jpg" alt="An empty rooftop bar terrace in the rain: pink neon, a string of dead bulbs, a lantern by a table, and the lit city beyond the glass railing">
-      <figcaption>A party that ended years ago. Rest here.</figcaption></div>
+      <div class="h">240 m</div>
+      <div class="pic"><img src="shots/beacon.jpg" alt="The red warning lamp on top of the tower, lit again, glowing on its pole in the rain above the city">
+      <figcaption>The top. The light catches, and the sky opens.</figcaption></div>
     </figure>
     <figure>
       <div class="h dark">200 m</div>
@@ -102,9 +98,19 @@ footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
       <figcaption>Inside the cloud. Blind, in the red.</figcaption></div>
     </figure>
     <figure>
-      <div class="h">240 m</div>
-      <div class="pic"><img src="shots/beacon.jpg" alt="The red warning lamp on top of the tower, lit again, glowing on its pole in the rain above the city">
-      <figcaption>The top. The light catches, and the sky opens.</figcaption></div>
+      <div class="h">114 m</div>
+      <div class="pic"><img src="shots/skybar.jpg" alt="An empty rooftop bar terrace in the rain: pink neon, a string of dead bulbs, a lantern by a table, and the lit city beyond the glass railing">
+      <figcaption>A party that ended years ago. Rest here.</figcaption></div>
+    </figure>
+    <figure>
+      <div class="h">40 m</div>
+      <div class="pic"><img src="shots/hands.jpg" alt="A gloved hand gripping a wet drainpipe on a concrete wall, looking down the pipe and its clamps to the street below">
+      <figcaption>Hold by hold. Height has weight.</figcaption></div>
+    </figure>
+    <figure>
+      <div class="h">0 m</div>
+      <div class="pic"><img src="shots/street.jpg" alt="A narrow street at night in heavy rain, lit shop signs and people with umbrellas, looking up at the dark HELIX tower with red drone lights round its top">
+      <figcaption>The street. That's the job, up there.</figcaption></div>
     </figure>
   </section>
 
