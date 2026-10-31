@@ -11,22 +11,22 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jbellingham.github.io/spire-website/">
 <meta property="og:image" content="https://jbellingham.github.io/spire-website/shots/street.jpg">
-<meta name="theme-color" content="#0d1015">
+<meta name="theme-color" content="#5c3a22">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' rx='3' fill='%230d1015'/%3E%3Crect y='13' width='16' height='3' fill='%232a1d14'/%3E%3Crect x='7' y='6' width='2' height='10' fill='%23e8e6e1'/%3E%3Crect x='6' y='1' width='4' height='4' fill='%23ff2a1a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=Oswald:wght@200&family=Roboto:wght@300;400&display=swap">
 <style>
 /* Spire's landing page (#284): one file, no scripts, no tracking; Google Fonts is the only outside request.
-   The page runs the climb's colour script top to bottom: moonlight above the cloud at the top, the cloud, the rain, the smog,
-   the street's orange at the foot. The screenshots climb the tower as you scroll (street first), each with its height in the margin.
+   The page runs the climb's colour script top to bottom, the way the climb goes: the street's orange at the top, under the
+   logo, then the smog, the rain, the cloud, and moonlight above the cloud at the foot. The screenshots climb the tower as you scroll (street first), each with its height in the margin.
    To fill a slot: drop a JPEG about 1600 px wide into shots/ with the slot's name, then replace that slot's
    <div class="slot">...</div> with <img src="shots/NAME.jpg" alt="..."> and keep the caption. */
 :root{--ink:#e8e6e1;--dim:#9aa0a8;--warm:#ffcc73;--red:#ff2a1a}
 *{box-sizing:border-box}
 html{background:#0d1015}
 body{margin:0;color:var(--ink);font:300 17px/1.6 Roboto,system-ui,sans-serif;
-  background:linear-gradient(#0a0d14 0%,#141a26 18%,#1c1f26 40%,#201c1c 62%,#3a2618 85%,#5c3a22 100%)}
+  background:linear-gradient(#5c3a22 0%,#3a2618 14%,#201c1c 36%,#1c1f26 58%,#141a26 80%,#0a0d14 100%)}
 a{color:var(--warm);text-underline-offset:3px}
 a:hover{color:#ffe0a8}
 .hero{min-height:92vh;display:grid;place-content:center;justify-items:center;text-align:center;padding:10vh 6vw 6vh;position:relative}
@@ -46,11 +46,11 @@ main{max-width:980px;margin:0 auto;padding:0 6vw 48px}
 .slot b{display:block;color:var(--ink);font-weight:400;font-size:14px;margin-bottom:4px}
 figcaption{color:var(--dim);font-size:14px;margin:6px 2px 0}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:40px 0 0}
-.card{border-top:1px solid #4a3a2c;padding-top:14px}
+.card{border-top:1px solid #2c323c;padding-top:14px}
 .card h2{font:400 13px Roboto,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 6px}
 .card.demo{border-top-color:var(--red)}
 .card p{margin:0}
-footer{color:#c9b8a5;font-size:13px;padding:36px 6vw 40px;text-align:center}
+footer{color:var(--dim);font-size:13px;padding:36px 6vw 40px;text-align:center}
 @media (max-width:640px){
   body{font-size:16px}
   .climb{grid-template-columns:48px 1fr;gap:0 10px}
